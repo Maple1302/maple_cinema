@@ -23,7 +23,7 @@ import android.net.TrafficStats
 import android.os.Process
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -75,8 +75,6 @@ object AppModule {
     fun provideSearchMovieRepository(apiService: ApiService): SearchRepository {
         return SearchRepository(apiService)
     }
-
-
 }
 
 

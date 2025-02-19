@@ -26,7 +26,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -58,8 +57,6 @@ fun SeekBar(
     modifier: Modifier = Modifier
 ) {
     var sliderWidth by remember { mutableFloatStateOf(0f) }
-
-
     BoxWithConstraints(
         modifier = modifier
             .fillMaxWidth()
@@ -227,16 +224,23 @@ fun VideoControlItem(icon: Int, onClick: () -> Unit, isBuffering: Boolean = fals
 
 @Composable
 fun PlaybackOptions(exoPlayer: ExoPlayer, nextEpisode: () -> Unit) {
+   var speed by remember { mutableFloatStateOf(1f) }
+
     Row(
         Modifier
             .fillMaxHeight(0.6f)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
+
+
+
         PlaybackItems(
             icon = R.drawable.speedometer,
             title = "Tốc độ",
-            onClick = { exoPlayer.setPlaybackSpeed(1.5f) })
+            onClick = {
+                speed = if(speed == 1.5f)  1f else  1.5f
+                exoPlayer.setPlaybackSpeed(speed) })
         PlaybackItems(icon = R.drawable.lock, title = "Khóa màn hình") {}
         PlaybackItems(icon = R.drawable.episode, title = "Các tập khác ") {}
         PlaybackItems(icon = R.drawable.subtitle, title = "Âm thanh và phụ đề") {}

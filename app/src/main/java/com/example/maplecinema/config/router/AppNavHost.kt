@@ -1,8 +1,6 @@
 package com.example.maplecinema.config.router
 
-import NetworkUsageScreen
 import com.example.maplecinema.feature.play_movie.MoviePlayerScreen
-import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,7 +21,7 @@ import com.example.maplecinema.feature.search.SearchScreen
 fun AppNavHost(navController: NavHostController, modifier: Modifier) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route,
+        startDestination = Screen.MoviePlayer.route,
         modifier = modifier.fillMaxSize()
     ) {
         composable(Screen.Home.route) {
@@ -50,25 +48,27 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier) {
             )
         }
         composable(Screen.MoviePlayer.route, arguments = listOf(
-            navArgument("slug") { type = NavType.StringType },
-            navArgument("index") { type = NavType.IntType }
+            navArgument("slug") { type = NavType.StringType
+                defaultValue = "khi-anh-chay-ve-phia-em"},
+            navArgument("index") { type = NavType.IntType
+                defaultValue = 0}
         )) { backStackEntry ->
             val slug = backStackEntry.arguments?.getString("slug")
-                ?: "te-tuong-luu-gu"
             val index = backStackEntry.arguments?.getInt("index")
-                ?: 0
-            MoviePlayerScreen(
-                slug = slug,
-                currentIndex = index,
-                onBack = { navController.popBackStack() },
-                nextEpisode = {
-                    navController.navigate(
-                        Screen.MoviePlayer.createRoute(
-                            slug,
-                            index + 1
+            if (slug != null && index != null) {
+                MoviePlayerScreen(
+                    slug = slug,
+                    currentIndex = index,
+                    onBack = { navController.popBackStack() },
+                    nextEpisode = {
+                        navController.navigate(
+                            Screen.MoviePlayer.createRoute(
+                                slug,
+                                index + 1
+                            )
                         )
-                    )
-                })
+                    })
+            }
         }
         composable(Screen.Search.route) {
             SearchScreen(openDetailScreen = { slug ->
