@@ -2,7 +2,6 @@ package com.example.maplecinema.feature.play_movie
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.maplecinema.domain.repository.MovieDetailRepository
@@ -38,35 +37,4 @@ class MoviePlayerViewModel @Inject constructor(private val repo: MovieDetailRepo
         }
 
     }
-
-    fun nextEpisode(
-        slugMovie: String,
-        currentEpisode: Int,
-    ) {
-
-        try {
-            _state.value = UiState.Loading
-            viewModelScope.launch {
-                fetchEpisode(slugMovie, currentEpisode + 1)
-            }
-        } catch (e: Exception) {
-            _state.value = UiState.Error(e.message.toString())
-
-        }
-    }
-    fun previousEpisode(
-        slugMovie: String,
-        currentEpisode: Int,
-    ) {
-        try {
-            _state.value = UiState.Loading
-            viewModelScope.launch {
-                fetchEpisode(slugMovie, currentEpisode - 1)
-            }
-        } catch (e: Exception) {
-            _state.value = UiState.Error(e.message.toString())
-        }
-    }
-
-
 }

@@ -27,7 +27,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -112,7 +111,7 @@ fun InitExoPlayer(context: Context, videoUrl: String,isBuffering: MutableState<B
 
  }}
     SetUpSystemUi(context)
-    ConfigVideo(videoUrl,context,exoPlayer)
+    ConfigVideo(exoPlayer)
     HandelProgressVideo(exoPlayer, progress, duration, progressTime)
     HandleStatePlayVideo(exoPlayer,context,enableController,isBuffering)
     DisposableEffect(Unit) {
@@ -126,7 +125,7 @@ fun InitExoPlayer(context: Context, videoUrl: String,isBuffering: MutableState<B
 }
 @Composable
 @OptIn(UnstableApi::class)
-fun ConfigVideo( videoUrl:String, context: Context, initPlayer: ExoPlayer){
+fun ConfigVideo( initPlayer: ExoPlayer){
 
     var totalDataUsed by remember { mutableLongStateOf(0L) }
     initPlayer.addAnalyticsListener(object : AnalyticsListener {
