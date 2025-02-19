@@ -1,8 +1,6 @@
 package com.example.maplecinema.di
 
 import NetworkUsageInterceptor
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
 import com.example.maplecinema.domain.repository.ListMovieRepository
 import com.example.maplecinema.domain.repository.MovieDetailRepository
 import com.example.maplecinema.domain.repository.SearchRepository
@@ -19,16 +17,6 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Singleton
-import android.net.TrafficStats
-import android.os.Process
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxSize
-
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -78,40 +66,40 @@ object AppModule {
 }
 
 
-@Composable
-fun NetworkUsageScreen() {
-    var receivedData by remember { mutableStateOf(0L) }
-    var transmittedData by remember { mutableStateOf(0L) }
-    val coroutineScope = rememberCoroutineScope()
-    val received = remember { NetworkUsageInterceptor.receivedBytes.get() / 1024 }
-    val sent = remember { NetworkUsageInterceptor.sentBytes.get() / 1024 }
-
-    LaunchedEffect(Unit) {
-        coroutineScope.launch {
-            while (true) {
-                receivedData = TrafficStats.getUidRxBytes(Process.myUid()) // Dữ liệu nhận
-                transmittedData = TrafficStats.getUidTxBytes(Process.myUid()) // Dữ liệu gửi
-                delay(1000) // Cập nhật mỗi giây
-            }
-        }
-    }
-
-    // Hiển thị thông tin
-    NetworkUsageUI(receivedData, transmittedData, received, sent)
-}
-
-@Composable
-fun NetworkUsageUI(received: Long, transmitted: Long, apiReceived: Long, apiTransmitted: Long) {
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text("Data Received: ${received / (1024 * 1024)} Mb")
-        Text("Data Sent: ${transmitted / (1024 * 1024)} Mb")
-        Text("Total: ${(received + transmitted) / (1024 * 1024)} Mb")
-        Text("Data Received Call API: ${apiReceived / (1024)} Mb")
-        Text("Data Sent Call API: ${apiReceived / (1024)} Mb")
-    }
-}
+//@Composable
+//fun NetworkUsageScreen() {
+//    var receivedData by remember { mutableStateOf(0L) }
+//    var transmittedData by remember { mutableStateOf(0L) }
+//    val coroutineScope = rememberCoroutineScope()
+//    val received = remember { NetworkUsageInterceptor.receivedBytes.get() / 1024 }
+//    val sent = remember { NetworkUsageInterceptor.sentBytes.get() / 1024 }
+//
+//    LaunchedEffect(Unit) {
+//        coroutineScope.launch {
+//            while (true) {
+//                receivedData = TrafficStats.getUidRxBytes(Process.myUid()) // Dữ liệu nhận
+//                transmittedData = TrafficStats.getUidTxBytes(Process.myUid()) // Dữ liệu gửi
+//                delay(1000) // Cập nhật mỗi giây
+//            }
+//        }
+//    }
+//
+//    // Hiển thị thông tin
+//    NetworkUsageUI(receivedData, transmittedData, received, sent)
+//}
+//
+//@Composable
+//fun NetworkUsageUI(received: Long, transmitted: Long, apiReceived: Long, apiTransmitted: Long) {
+//
+//    Column(
+//        modifier = Modifier.fillMaxSize(),
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        verticalArrangement = Arrangement.Center
+//    ) {
+//        Text("Data Received: ${received / (1024 * 1024)} Mb")
+//        Text("Data Sent: ${transmitted / (1024 * 1024)} Mb")
+//        Text("Total: ${(received + transmitted) / (1024 * 1024)} Mb")
+//        Text("Data Received Call API: ${apiReceived / (1024)} Mb")
+//        Text("Data Sent Call API: ${apiReceived / (1024)} Mb")
+//    }
+//}
