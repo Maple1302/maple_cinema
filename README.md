@@ -19,16 +19,8 @@ Room Database - Lưu trữ dữ liệu cục bộ.
 Paging 3 - Load danh sách phim hiệu quả.
 Coil - Tải ảnh nhanh và tối ưu bộ nhớ.
 📸 Ảnh màn hình (Screenshots)
-![Screenshot_2025-02-19-12-22-17-033_com example maplecinema](https://github.com/user-attachments/assets/7b548726-eb57-4333-829a-26e7d716d7ba)
-![Screenshot_2025-02-19-12-21-52-729_com example maplecinema](https://github.com/user-attachments/assets/c06fea3e-6445-487e-972b-08db15f9e904)
-
-![Screenshot_2025-02-19-12-21-56-593_com example maplecinema](https://github.com/user-attachments/assets/98d5669b-8313-47bf-89b7-0cd95dc000a0)
-![Screenshot_2025-02-19-12-19-46-012_com example maplecinema](https://github.com/user-attachments/assets/9403266c-86ae-41e3-9cc5-76052d5d7133)
-
-
-![Screenshot_2025-02-19-12-19-38-619_com example maplecinema](https://github.com/user-attachments/assets/9ba01204-690c-4c2e-ba25-8040a31beef2)
-
-![Screenshot_2025-02-19-12-19-24-351_com example maplecinema](https://github.com/user-attachments/assets/41661cb8-9f45-4883-9a7b-63c531872c7f)
+![Screenshot_2025-02-19-12-22-17-033_com example maplecinema](https://github.com/user-attachments/assets/7b548726-eb57-4333-829a-26e7d716d7ba)![Screenshot_2025-02-19-12-21-52-729_com example maplecinema](https://github.com/user-attachments/assets/c06fea3e-6445-487e-972b-08db15f9e904)![Screenshot_2025-02-19-12-21-56-593_com example maplecinema](https://github.com/user-attachments/assets/98d5669b-8313-47bf-89b7-0cd95dc000a0)
+![Screenshot_2025-02-19-12-19-46-012_com example maplecinema](https://github.com/user-attachments/assets/9403266c-86ae-41e3-9cc5-76052d5d7133)![Screenshot_2025-02-19-12-19-38-619_com example maplecinema](https://github.com/user-attachments/assets/9ba01204-690c-4c2e-ba25-8040a31beef2)![Screenshot_2025-02-19-12-19-24-351_com example maplecinema](https://github.com/user-attachments/assets/41661cb8-9f45-4883-9a7b-63c531872c7f)
 
 🚀 Cài đặt và chạy ứng dụng
 1️⃣ Clone repository
